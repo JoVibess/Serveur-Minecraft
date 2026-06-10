@@ -40,6 +40,13 @@ Dans le client Minecraft Java Edition :
 
 - URL : [http://localhost:12002](http://localhost:12002)
 - Login : `admin` / `admin`
+
+## Identifiants de connexion (tous services)
+
+| Service | URL | Login | Mot de passe |
+|---|---|---|---|
+| Grafana | http://localhost:12002 | `admin` | `admin` |
+| Minecraft (client Java) | `localhost:12000` | compte Minecraft personnel | — |
 - Deux dashboards provisionnés automatiquement :
   - **Infrastructure** — CPU, RAM, disque, réseau, conteneurs
   - **Minecraft** — TPS, joueurs, mémoire JVM, chunks chargés, entités
