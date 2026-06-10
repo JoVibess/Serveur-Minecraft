@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= serverName %></title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="navbar">
+    <div class="nav-inner">
+      <span class="nav-logo">⛏ <%= serverName %></span>
+      <div class="nav-links">
+        <a href="#server">Serveur</a>
+        <a href="#about">À propos</a>
+        <a href="#rules">Règles</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="server">
+    <div class="hero-content">
+      <div class="hero-text">
+        <span class="badge-pill">🟢 Serveur en ligne</span>
+        <h1><%= serverName %></h1>
+        <p class="hero-desc"><%= description %></p>
+        <div class="server-address">
+          <span class="address-label">Adresse de connexion</span>
+          <div class="address-box">
+            <code><%= serverAddress %></code>
+            <button class="copy-btn" onclick="copyAddress()">Copier</button>
+          </div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="floating-card">
+          <div class="stat-row">
+            <span class="stat-icon">👾</span>
+            <div>
+              <div class="stat-label">Mode</div>
+              <div class="stat-value">Paper Survival</div>
+            </div>
+          </div>
+          <div class="stat-row">
+            <span class="stat-icon">🧱</span>
+            <div>
+              <div class="stat-label">Version</div>
+              <div class="stat-value">Java Edition</div>
+            </div>
+          </div>
+          <div class="stat-row">
+            <span class="stat-icon">⚡</span>
+            <div>
+              <div class="stat-label">Performance</div>
+              <div class="stat-value">Monitoré 24/7</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="wave">
+      <svg viewBox="0 0 1440 80" preserveAspectRatio="none"><path d="M0,40 C360,80 1080,0 1440,40 L1440,80 L0,80 Z" fill="#f8fafc"/></svg>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="container">
+      <h2>À propos du serveur</h2>
+      <div class="about-grid">
+        <div class="about-card">
+          <span class="about-icon">🗺️</span>
+          <h3>Monde persistant</h3>
+          <p>Tes constructions sont sauvegardées et survivent aux redémarrages grâce aux volumes Docker.</p>
+        </div>
+        <div class="about-card">
+          <span class="about-icon">📊</span>
+          <h3>Monitoring temps réel</h3>
+          <p>CPU, RAM, joueurs connectés — tout est visible dans Grafana. Le serveur est observable à tout moment.</p>
+        </div>
+        <div class="about-card">
+          <span class="about-icon">🐳</span>
+          <h3>Infrastructure Docker</h3>
+          <p>Stack entièrement conteneurisée avec Docker Compose. Déploiement reproductible en une commande.</p>
+        </div>
+      </div>
+    </div>
+    <div class="wave wave-dark">
+      <svg viewBox="0 0 1440 80" preserveAspectRatio="none"><path d="M0,40 C360,0 1080,80 1440,40 L1440,80 L0,80 Z" fill="#0f172a"/></svg>
+    </div>
+  </section>
+
+  <!-- RULES -->
+  <section class="rules" id="rules">
+    <div class="container">
+      <h2>Règles du serveur</h2>
+      <p class="rules-sub">Respecte ces règles pour que tout le monde passe un bon moment.</p>
+      <div class="rules-list">
+        <% rules.forEach((rule, i) => { %>
+          <div class="rule-item">
+            <span class="rule-num">0<%= i + 1 %></span>
+            <span class="rule-text"><%= rule %></span>
+          </div>
+        <% }) %>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p><%= serverName %> &mdash; Paper Edition &mdash; Monitoré avec Prometheus &amp; Grafana</p>
+  </footer>
+
+  <script>
+    function copyAddress() {
+      navigator.clipboard.writeText('<%= serverAddress %>');
+      const btn = document.querySelector('.copy-btn');
+      btn.textContent = 'Copié !';
+      setTimeout(() => btn.textContent = 'Copier', 2000);
+    }
+  </script>
+
+</body>
+</html>
